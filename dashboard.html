@@ -1,0 +1,175 @@
+{% extends "base.html" %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block content %}
+
+
+<h1>📊 Dashboard</h1>
+
+<div class="dashboard">
+
+<div class="card blue">
+<h2>👨‍🎓 Total Students</h2>
+<h1>{{ total_students }}</h1>
+</div>
+
+<div class="card green">
+<h2>📅 Attendance Records</h2>
+<h1>{{ total_attendance }}</h1>
+</div>
+
+<div class="card orange">
+<h2>✅ Present</h2>
+<h1>{{ total_present }}</h1>
+</div>
+
+<div class="card red">
+<h2>❌ Absent</h2>
+<h1>{{ total_absent }}</h1>
+</div>
+
+<div class="card purple">
+<h2>📈 Attendance %</h2>
+<h1>{{ attendance_percentage }}%</h1>
+</div>
+
+<div class="card dark">
+<h2>⚠ Students Below 75%</h2>
+<h1>{{ below_75 }}</h1>
+</div>
+
+</div>
+<hr>
+
+<h2>📊 Attendance Analytics</h2>
+
+<div class="chart-container">
+
+    <div class="chart-box">
+        <h3>Present vs Absent</h3>
+        <canvas id="attendanceChart"></canvas>
+    </div>
+
+    <div class="chart-box">
+        <h3>Student Attendance Overview</h3>
+        <canvas id="studentChart"></canvas>
+    </div>
+
+</div>
+
+<script>
+
+const attendanceChart = document.getElementById('attendanceChart');
+
+new Chart(attendanceChart, {
+    type: 'pie',
+    data: {
+        labels: ['Present', 'Absent'],
+        datasets: [{
+            data: [
+                {{ total_present }},
+                {{ total_absent }}
+            ]
+        }]
+    },
+    options: {
+        responsive: true
+    }
+});
+
+
+const studentChart = document.getElementById('studentChart');
+
+new Chart(studentChart, {
+    type: 'bar',
+    data: {
+        labels: ['Total Students', 'Below 75%'],
+        datasets: [{
+            label: 'Students',
+            data: [
+                {{ total_students }},
+                {{ below_75 }}
+            ]
+        }]
+    },
+    options: {
+        responsive: true,
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+</script>
+<!-- Attendance Chart -->
+
+<div class="card" style="margin-top:30px;">
+
+    <h2>📊 Attendance Overview</h2>
+
+    <canvas id="attendanceChart"></canvas>
+
+</div>
+
+
+<!-- Chart.js -->
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+
+const ctx = document.getElementById('attendanceChart');
+
+new Chart(ctx, {
+
+    type: 'bar',
+
+    data: {
+
+        labels: ['Present', 'Absent'],
+
+        datasets: [{
+
+            label: 'Attendance Records',
+
+            data: [
+                {{ total_present }},
+                {{ total_absent }}
+            ]
+
+        }]
+
+    },
+
+    options: {
+
+        responsive: true,
+
+        plugins: {
+
+            legend: {
+                display: true
+            }
+
+        },
+
+        scales: {
+
+            y: {
+                beginAtZero: true
+            }
+
+        }
+
+    }
+
+});
+
+</script>
+
+{% endblock %}

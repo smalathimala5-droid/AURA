@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AURA - Automate University Record & Attendance</title>
+
+    <style>
+
+        body{
+    margin:0;
+    padding:0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(-45deg,#0f172a,#1e3a8a,#2563eb,#0ea5e9);
+    background-size:400% 400%;
+    animation:bgMove 10s ease infinite;
+    text-align:center;
+    color:white;
+    min-height:100vh;
+}
+
+@keyframes bgMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+        .title{
+    font-size:50px;
+    font-weight:bold;
+    color:white;
+    text-shadow:0px 0px 15px rgba(255,255,255,0.5);
+}
+
+        .subtitle{
+            font-size:22px;
+            margin-bottom:40px;
+        }
+
+        .btn{
+    display:inline-block;
+    margin:10px;
+    padding:12px 20px;
+    text-decoration:none;
+    color:white;
+    border-radius:10px;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.btn:hover{
+    transform:translateY(-5px);
+    box-shadow:0px 8px 20px rgba(0,0,0,0.4);
+}
+       
+        .add{background:#1976d2;}
+        .view{background:#388e3c;}
+        .dash{background:#ff9800;}
+        .attendance{background:#7b1fa2;}
+        .takeattendance{background:#ff5722;}
+.logo{
+    margin-top:40px;
+    animation:logoPop 2s ease;
+}
+
+@keyframes logoPop{
+    0%{
+        transform:scale(0);
+        opacity:0;
+    }
+    100%{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+.container{
+    width:75%;
+    margin:auto;
+    margin-top:30px;
+    background:rgba(255,255,255,0.1);
+    backdrop-filter:blur(10px);
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0px 0px 20px rgba(0,0,0,0.3);
+}
+    </style>
+</head>
+
+<body>
+
+    <!-- Logo -->
+   <img class="logo"
+src="{{ url_for('static', filename='images/logo.png') }}"
+width="180"
+alt="AURA Logo">
+
+    <div class="container">
+
+        <div class="title">
+            AURA
+        </div>
+
+        <div class="subtitle">
+            Welcome to the Automate University Record & Attendance
+        </div>
+
+<a href="/add" class="btn add">Add Student</a>
+
+<a href="/students" class="btn view">View Students</a>
+
+<a href="/dashboard" class="btn dash">Dashboard</a>
+
+<a href="/add_marks" class="btn add">Add Marks</a>
+
+<a href="/marks" class="btn view">View Marks</a>
+
+<a href="/take_attendance" class="btn attendance">
+    Take Attendance
+</a>
+
+<a href="/attendance_list" class="btn attendance">
+    Attendance Records
+</a> 
+    </div>
+
+</body>
+</html>

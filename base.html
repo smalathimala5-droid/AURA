@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}AURA{% endblock %}</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="AURA Logo">
+
+        <h2>AURA</h2>
+
+        <a href="/">🏠 Home</a>
+        <a href="/dashboard">📊 Dashboard</a>
+        <a href="/students">👨‍🎓 Students</a>
+        <a href="/add">➕ Add Student</a>
+        <a href="/take_attendance">📅 Attendance</a>
+        <a href="/attendance_list">📋 Attendance Records</a>
+        <a href="/add_marks">➕ Add Marks</a>
+        <a href="/marks">📚 View Marks</a>
+        <a href="/performance">📈 Performance</a>
+        <a href="/notifications">🔔 Notifications</a>
+        <a href="/reports">📄 Reports</a>
+        <a href="/profile">👤 Profile</a>
+
+    </div>
+
+    <!-- Main Content -->
+    <div class="main">
+
+        <!-- Top Navigation -->
+        <div class="topbar">
+
+            <h2>Automate University Record & Attendance</h2>
+
+            <h3>Welcome Admin 👋</h3>
+
+        </div>
+
+        <!-- Page Content -->
+        <div class="content">
+
+            {% block content %}
+
+            {% endblock %}
+
+        </div>
+
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</body>
+</html>

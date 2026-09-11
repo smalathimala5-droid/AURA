@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}
+Attendance Records
+{% endblock %}
+
+{% block content %}
+
+<h1>📋 Attendance Records</h1>
+
+<div class="attendance-records">
+
+    <h2>Student Attendance History</h2>
+
+    <table class="records-table">
+
+        <tr>
+            <th>ID</th>
+            <th>Student ID</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Status</th>
+        </tr>
+
+        {% for record in attendance %}
+
+        <tr>
+
+            <td>{{ record[0] }}</td>
+
+            <td>
+                {{ record[1] }}
+            </td>
+
+            <td>
+                {{ record[2] }}
+            </td>
+
+            <td>
+                {{ record[3] }}
+            </td>
+
+            <td>
+
+                {% if record[4] == "Present" %}
+
+                    <span class="records-present">
+                        🟢 Present
+                    </span>
+
+                {% else %}
+
+                    <span class="records-absent">
+                        🔴 Absent
+                    </span>
+
+                {% endif %}
+
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</div>
+
+<div class="back-home">
+
+    <a href="/dashboard" class="btn">
+        📊 Back to Dashboard
+    </a>
+
+</div>
+
+{% endblock %}

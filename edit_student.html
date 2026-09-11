@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Student</title>
+</head>
+<body>
+
+<h2>Edit Student Details</h2>
+
+<form action="/update/{{ student[0] }}" method="POST">
+
+    Student ID:
+    <input type="text" value="{{ student[0] }}" readonly>
+    <br><br>
+
+    Name:
+    <input type="text" name="name" value="{{ student[1] }}">
+    <br><br>
+
+    Department:
+    <input type="text" name="department" value="{{ student[2] }}">
+    <br><br>
+
+    Semester:
+    <input type="text" name="semester" value="{{ student[3] }}">
+    <br><br>
+
+    Email:
+    <input type="email" name="email" value="{{ student[4] }}">
+    <br><br>
+
+    <input type="submit" value="Update Student">
+
+</form>
+
+</body>
+</html>

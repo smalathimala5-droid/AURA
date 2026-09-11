@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}
+Students
+{% endblock %}
+
+{% block content %}
+
+<h2>Registered Students</h2>
+<form method="GET" action="/students">
+    <input type="text" name="search" placeholder="Search by ID or Name">
+    <input type="submit" value="Search">
+</form>
+<br>
+
+<table border="1">
+
+<tr>
+    <th>Student ID</th>
+    <th>Name</th>
+    <th>Department</th>
+    <th>Semester</th>
+    <th>Email</th>
+    <th>Attendance %</th>
+    <th>Status</th>
+    <th>Classes Needed</th>
+    <th>Action</th>
+</tr>
+
+{% for student in students %}
+<tr>
+
+    <td>{{ student.student_id }}</td>
+    <td>{{ student.name }}</td>
+    <td>{{ student.department }}</td>
+    <td>{{ student.semester }}</td>
+    <td>{{ student.email }}</td>
+
+    <td>{{ student.percentage }}%</td>
+
+    <td>
+        {% if student.status == "Warning" %}
+            🔴 {{ student.status }}
+        {% elif student.status == "Good" %}
+            🟡 {{ student.status }}
+        {% else %}
+            🟢 {{ student.status }}
+        {% endif %}
+    </td>
+
+ <td>{{ student.classes_needed }}</td>
+
+ <td>
+    <div class="action-buttons">
+        <a href="/edit/{{ student.student_id }}" class="btn">Edit</a>
+        <a href="/delete/{{ student.student_id }}" class="btn">Delete</a>
+        <a href="/attendance/{{ student.student_id }}" class="btn">Attendance</a>
+    </div>
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% endblock %}

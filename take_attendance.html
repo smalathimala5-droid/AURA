@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}
+Take Attendance
+{% endblock %}
+
+{% block content %}
+
+<h1>📋 Take Attendance</h1>
+
+<div class="attendance-container">
+
+    <h2>Today's Student Attendance</h2>
+
+    <table class="attendance-table">
+
+        <thead>
+            <tr>
+                <th>Student ID</th>
+                <th>Name</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+        {% for student in students %}
+
+            <tr>
+
+                <td>{{ student[0] }}</td>
+
+                <td>{{ student[1] }}</td>
+
+                <td>
+
+                    <div class="attendance-buttons">
+
+                        <a href="/save_attendance/{{ student[0] }}/Present"
+                           class="present-btn">
+                            ✓ Present
+                        </a>
+
+                        <a href="/save_attendance/{{ student[0] }}/Absent"
+                           class="absent-btn">
+                            ✕ Absent
+                        </a>
+
+                    </div>
+
+                </td>
+
+            </tr>
+
+        {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+{% endblock %}

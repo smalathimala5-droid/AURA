@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mark Attendance</title>
+</head>
+<body>
+
+<h2>Mark Attendance</h2>
+
+<form method="POST">
+
+    Student ID:
+    <input type="text" value="{{ student_id }}" readonly>
+
+    <br><br>
+
+    <input type="radio" name="status" value="Present" checked>
+    Present
+
+    <input type="radio" name="status" value="Absent">
+    Absent
+
+    <br><br>
+
+    <input type="submit" value="Save Attendance">
+
+</form>
+
+</body>
+</html>

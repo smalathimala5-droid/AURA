@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}
+Notifications
+{% endblock %}
+
+{% block content %}
+
+<h1>🔔 Notifications</h1>
+
+<div class="card">
+
+    <h2>⚠️ Attendance Notifications</h2>
+
+    <p>
+        Students whose attendance is below 75% will receive
+        an attendance warning email.
+    </p>
+
+    <br>
+
+    {% if notifications %}
+
+        {% for notification in notifications %}
+
+        <div class="notification-card">
+
+            <h3>⚠️ {{ notification.name }}</h3>
+
+            <p>
+                <strong>Student ID:</strong>
+                {{ notification.student_id }}
+            </p>
+
+            <p>
+                <strong>Attendance:</strong>
+                {{ notification.attendance }}%
+            </p>
+
+            <p class="absent">
+                Attendance is below 75%.
+            </p>
+
+        </div>
+
+        <hr>
+
+        {% endfor %}
+
+    {% else %}
+
+        <p class="present">
+            ✅ No students are currently below 75% attendance.
+        </p>
+
+    {% endif %}
+
+</div>
+
+<br>
+
+<div style="text-align:center;">
+    <a href="/dashboard" class="btn">📊 Back to Dashboard</a>
+</div>
+
+{% endblock %}

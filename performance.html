@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}
+Performance
+{% endblock %}
+
+{% block content %}
+
+<h1>📈 Student Performance</h1>
+
+<table>
+
+<tr>
+    <th>Student ID</th>
+    <th>Name</th>
+    <th>Attendance %</th>
+    <th>Average Marks</th>
+    <th>Grade</th>
+    <th>Performance</th>
+</tr>
+
+{% for student in performance %}
+
+<tr>
+
+    <td>{{ student.student_id }}</td>
+    <td>{{ student.name }}</td>
+    <td>{{ student.attendance }}%</td>
+    <td>{{ student.average }}</td>
+    <td>{{ student.grade }}</td>
+
+    <td>
+        {% if student.performance == "Excellent" %}
+            🟢 Excellent
+        {% elif student.performance == "Good" %}
+            🟡 Good
+        {% else %}
+            🔴 Needs Improvement
+        {% endif %}
+    </td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% endblock %}

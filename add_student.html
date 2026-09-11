@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}
+Add Student
+{% endblock %}
+
+{% block content %}
+
+<h1>Add Student</h1>
+
+<div class="form-center">
+    <div class="form-container">
+
+        <form action="/submit" method="POST">
+
+            <label>Student ID</label>
+            <input type="text" name="student_id" required>
+
+            <label>Name</label>
+            <input type="text" name="name" required>
+
+            <label>Department</label>
+            <input type="text" name="department" required>
+
+            <label>Semester</label>
+            <input type="text" name="semester" required>
+
+            <label>Email</label>
+            <input type="email" name="email" required>
+
+            <br>
+
+            <button type="submit" class="btn">
+                Register Student
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

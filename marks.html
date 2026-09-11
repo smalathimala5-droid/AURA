@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}
+View Marks
+{% endblock %}
+
+{% block content %}
+
+<h1>📚 Student Marks</h1>
+
+<table>
+
+<tr>
+    <th>Student ID</th>
+    <th>Semester</th>
+    <th>Subject</th>
+    <th>Internal</th>
+    <th>External</th>
+    <th>Total</th>
+    <th>Grade</th>
+    <th>Action</th>
+</tr>
+
+{% for mark in marks %}
+
+<tr>
+
+    <td>{{ mark[1] }}</td>
+    <td>{{ mark[2] }}</td>
+    <td>{{ mark[3] }}</td>
+    <td>{{ mark[4] }}</td>
+    <td>{{ mark[5] }}</td>
+    <td>{{ mark[6] }}</td>
+    <td>{{ mark[7] }}</td>
+
+    <td>
+        <div class="action-buttons">
+            <a href="/edit_marks/{{ mark[0] }}" class="btn">Edit</a>
+            <a href="/delete_marks/{{ mark[0] }}" class="btn">Delete</a>
+        </div>
+    </td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% endblock %}
